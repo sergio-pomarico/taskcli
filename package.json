@@ -15,6 +15,7 @@
     "command",
     "console"
   ],
+  "type": "module",
   "author": "Sergio Pomárico <sergiodavid21@gmail.com>",
   "license": "MIT",
   "bugs": {
