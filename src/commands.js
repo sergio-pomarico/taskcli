@@ -1,6 +1,10 @@
 import { program } from 'commander';
 import inquirer from 'inquirer';
-import { add, list } from './controllers/task.controller.js';
+import {
+  addTask,
+  listTasks,
+  deleteTask,
+} from './controllers/task.controller.js';
 
 program.command('save').action(async () => {
   const { prompt } = inquirer;
@@ -16,9 +20,11 @@ program.command('save').action(async () => {
       name: 'description',
     },
   ]);
-  add(answers);
+  addTask(answers);
 });
 
-program.command('list').action(async () => list());
+program.command('list').action(async () => listTasks());
+
+program.command('delete <id>').action(async (id) => deleteTask(id));
 
 program.parse(process.argv);
