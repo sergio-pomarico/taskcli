@@ -1,5 +1,6 @@
 import { program } from 'commander';
 import inquirer from 'inquirer';
+import { add } from './controllers/task.controller.js';
 
 program.command('save').action(async () => {
   const { prompt } = inquirer;
@@ -15,7 +16,7 @@ program.command('save').action(async () => {
       name: 'description',
     },
   ]);
-  console.log(answers);
+  add(answers);
 });
 
 program.parse(process.argv);
