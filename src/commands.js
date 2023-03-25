@@ -5,6 +5,7 @@ import {
   listTasks,
   deleteTask,
   updateTasks,
+  findTask,
 } from './controllers/task.controller.js';
 
 const questions = [
@@ -35,5 +36,7 @@ program.command('update <id>').action(async (id) => {
   const answers = await prompt(questions);
   updateTasks(id, answers);
 });
+
+program.command('find <text>').action(async (task) => findTask(task));
 
 program.parse(process.argv);

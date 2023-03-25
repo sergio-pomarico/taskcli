@@ -30,3 +30,22 @@ export const updateTasks = async (_id, task) => {
   console.info(`✅ task ${_id} updated`);
   await closeConnection();
 };
+
+export const findTask = async (text) => {
+  const search = new RegExp(text, 'i');
+  const tasks = await Task.find({
+    $or: [{ title: search }, { description: search }],
+  });
+  if (tasks.length === 0) {
+    console.log('🔎 tasks not found');
+  } else {
+    console.table(
+      tasks.map((task) => ({
+        id: task._id.toString(),
+        title: task.title,
+        description: task.description,
+      }))
+    );
+  }
+  await closeConnection();
+};
