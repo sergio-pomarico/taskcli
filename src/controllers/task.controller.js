@@ -24,3 +24,9 @@ export const deleteTask = async (id) => {
   console.info('❌ task deleted');
   await closeConnection();
 };
+
+export const updateTasks = async (_id, task) => {
+  await Task.updateOne({ _id }, task);
+  console.info(`✅ task ${_id} updated`);
+  await closeConnection();
+};
