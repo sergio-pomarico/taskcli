@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { connectDB } from './db.js';
 import './commands.js';
 
